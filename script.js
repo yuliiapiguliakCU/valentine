@@ -5,6 +5,7 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const celebration = document.getElementById("celebration");
 const loveTune = document.getElementById('loveTune');
+const heartsContainer = document.getElementById('heartsContainer');
 
 let count = 0;
 
@@ -44,9 +45,25 @@ noBtn.addEventListener("mouseover", function() {
 yesBtn.addEventListener("click", function() {
     questionSection.style.display = "none";
     celebration.style.display = "block";
+
+    // Play love tune
     loveTune.currentTime = 0;
-    loveTune.play();
-    createConfetti(); // trigger confetti
+    loveTune.play().catch(err => console.log('Audio blocked:', err));
+
+    // Create confetti
+    createConfetti();
+
+    // Create falling hearts
+    for (let i = 0; i < 30; i++) {
+        const heartEmoji = document.createElement('div');
+        heartEmoji.classList.add('fallingHeart');
+        heartEmoji.textContent = '💖';
+        heartEmoji.style.left = Math.random() * window.innerWidth + 'px';
+        heartEmoji.style.animationDuration = 2 + Math.random() * 2 + 's';
+        heartEmoji.style.fontSize = 20 + Math.random() * 20 + 'px';
+        heartsContainer.appendChild(heartEmoji);
+        heartEmoji.addEventListener('animationend', () => heartEmoji.remove());
+    }
 });
 
 // Realistic confetti
@@ -63,16 +80,13 @@ function createConfetti() {
         confetti.style.opacity = Math.random();
         confetti.style.pointerEvents = 'none';
         confetti.style.transition = 'transform 3s linear, top 3s linear, opacity 3s linear';
-
         document.body.appendChild(confetti);
-
         setTimeout(() => {
             const rotate = Math.random() * 360;
             confetti.style.top = window.innerHeight + 'px';
             confetti.style.transform = `rotate(${rotate}deg)`;
             confetti.style.opacity = 0;
         }, 50);
-
         setTimeout(() => confetti.remove(), 3100);
     }
 }
