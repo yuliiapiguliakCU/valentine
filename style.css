@@ -5,7 +5,7 @@ body {
     text-align: center;
     background: linear-gradient(to right, #ff758c, #ff7eb3);
     overflow: hidden;
-    color: #ffffff;
+    color: white;
 }
 
 h1 {
@@ -17,26 +17,21 @@ img {
     width: 300px;
     border-radius: 20px;
     margin: 20px 0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background-color: white;
     padding: 10px;
 }
 
 #questionSection img {
     display: block;
     margin: 20px auto;
-    width: 300px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    background-color: #ffffff;
-    padding: 10px;
 }
 
 #heart {
     font-size: 60px;
     position: absolute;
     cursor: pointer;
-    transition: left 0.3s ease, top 0.3s ease;
+    transition: left 0.3s ease, top 0.3s ease, transform 0.2s ease;
 }
 
 #questionSection {
@@ -55,7 +50,7 @@ button {
 
 #yesBtn {
     background-color: #ff4d6d;
-    color: #ffffff;
+    color: white;
 }
 
 #yesBtn:hover {
@@ -63,12 +58,40 @@ button {
 }
 
 #noBtn {
-    background-color: #444444;
-    color: #ffffff;
+    background-color: #444;
+    color: white;
     position: absolute;
 }
 
 #celebration {
     display: none;
     margin-top: 120px;
+}
+
+#heartsContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.fallingHeart {
+    position: absolute;
+    font-size: 24px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
