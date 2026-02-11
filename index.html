@@ -114,7 +114,6 @@ const celebration = document.getElementById("celebration");
 
 let count = 0;
 
-// Move heart randomly
 function moveHeart() {
     const x = Math.random() * (window.innerWidth - 60);
     const y = Math.random() * (window.innerHeight - 60);
@@ -122,7 +121,6 @@ function moveHeart() {
     heart.style.top = y + "px";
 }
 
-// Initial position
 moveHeart();
 
 // When heart clicked
@@ -139,7 +137,6 @@ heart.addEventListener("click", function() {
     }
 });;
 
-// Make NO button run away
 noBtn.addEventListener("mouseover", function() {
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 60);
@@ -147,42 +144,38 @@ noBtn.addEventListener("mouseover", function() {
     noBtn.style.top = y + "px";
 });
 
-// YES button click
 yesBtn.addEventListener("click", function() {
     questionSection.style.display = "none";
     celebration.style.display = "block";
 });
     
-// Confetti effect when YES is clicked
 function createConfetti() {
-    for (let i = 0; i < 100; i++) {
+    const colors = ['#ff4d6d', '#ffcd56', '#4d79ff', '#ff7eb3', '#ffffff'];
+    for (let i = 0; i < 150; i++) {
         const confetti = document.createElement('div');
-        confetti.innerHTML = '🎊';
         confetti.style.position = 'absolute';
-        confetti.style.fontSize = Math.random() * 24 + 12 + 'px';
+        confetti.style.width = confetti.style.height = Math.random() * 8 + 4 + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = '50%';
         confetti.style.left = Math.random() * window.innerWidth + 'px';
-        confetti.style.top = '-50px';
+        confetti.style.top = '-10px';
         confetti.style.opacity = Math.random();
-        confetti.style.transition = 'top 3s linear, opacity 3s linear';
+        confetti.style.pointerEvents = 'none';
+        confetti.style.transition = 'transform 3s linear, top 3s linear, opacity 3s linear';
+
         document.body.appendChild(confetti);
 
         setTimeout(() => {
+            const rotate = Math.random() * 360;
             confetti.style.top = window.innerHeight + 'px';
+            confetti.style.transform = `rotate(${rotate}deg)`;
             confetti.style.opacity = 0;
-        }, 100);
+        }, 50);
 
-        setTimeout(() => {
-            confetti.remove();
-        }, 3100);
+        setTimeout(() => confetti.remove(), 3100);
     }
 }
 
-// Trigger confetti on YES click
-yesBtn.addEventListener("click", function() {
-    questionSection.style.display = "none";
-    celebration.style.display = "block";
-    createConfetti();
-});
 
 </script>
 
