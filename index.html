@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine? ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        overflow: hidden;
+    }
+
+    .container {
+        margin-top: 70px;
+    }
+
+    h1 {
+        font-size: 40px;
+        color: white;
+    }
+
+    img {
+        width: 300px;
+        border-radius: 20px;
+        margin: 20px 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    button {
+        padding: 15px 35px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 20px;
+        transition: 0.2s;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.1);
+    }
+
+    #noBtn {
+        background-color: #444;
+        color: white;
+        position: absolute;
+    }
+
+    .celebration {
+        display: none;
+        margin-top: 100px;
+    }
+
+    .celebration h1 {
+        font-size: 50px;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainContent">
+
+    <!-- Replace this with your real photo -->
+    <img src="us.jpg">
+
+    <h1>Will you be my Valentine? ❤️</h1>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 😢</button>
+
+</div>
+
+<div class="celebration" id="celebration">
+    <h1>YAAAY!!! You’re stuck with me! 🎉💘</h1>
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" width="300">
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const celebration = document.getElementById("celebration");
+const mainContent = document.getElementById("mainContent");
+
+// Make NO button run away
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// When YES is clicked
+yesBtn.addEventListener("click", function() {
+    mainContent.style.display = "none";
+    celebration.style.display = "block";
+});
+</script>
+
+</body>
+</html>
 
