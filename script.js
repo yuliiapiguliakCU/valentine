@@ -4,6 +4,7 @@ const questionSection = document.getElementById("questionSection");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const celebration = document.getElementById("celebration");
+const loveTune = document.getElementById('loveTune');
 
 let count = 0;
 
@@ -43,6 +44,8 @@ noBtn.addEventListener("mouseover", function() {
 yesBtn.addEventListener("click", function() {
     questionSection.style.display = "none";
     celebration.style.display = "block";
+    loveTune.currentTime = 0;
+    loveTune.play();
     createConfetti(); // trigger confetti
 });
 
