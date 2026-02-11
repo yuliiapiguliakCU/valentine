@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Will You Be My Valentine? ❤️</title>
+<title>Будешь моей валентинкой? ❤️</title>
 
 <style>
     body {
@@ -74,10 +74,9 @@
 
 <div class="container" id="mainContent">
 
-    <!-- Replace this with your real photo -->
-    <img src="pngtree-bunny-valentines-day-cute-cartoon-animal-png-image_5747359.jpg">
+    <img src="us.jpg">
 
-    <h1>Will you be my Valentine? ❤️</h1>
+    <h1>Будешь моей валентинкой? ❤️</h1>
 
     <button id="yesBtn">Yes 💖</button>
     <button id="noBtn">No 😢</button>
@@ -85,7 +84,7 @@
 </div>
 
 <div class="celebration" id="celebration">
-    <h1>YAAAY!!! You’re stuck with me! 🎉💘</h1>
+    <h1>Ураааа! Ты со мной навсегда! 🎉💘</h1>
     <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" width="300">
 </div>
 
@@ -95,7 +94,6 @@ const yesBtn = document.getElementById("yesBtn");
 const celebration = document.getElementById("celebration");
 const mainContent = document.getElementById("mainContent");
 
-// Make NO button run away
 noBtn.addEventListener("mouseover", function() {
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 60);
@@ -103,7 +101,6 @@ noBtn.addEventListener("mouseover", function() {
     noBtn.style.top = y + "px";
 });
 
-// When YES is clicked
 yesBtn.addEventListener("click", function() {
     mainContent.style.display = "none";
     celebration.style.display = "block";
