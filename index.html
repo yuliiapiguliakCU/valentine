@@ -28,13 +28,27 @@
         background-color: white;
         padding: 10px;
     }
+    
+    #questionSection img {
+        width: 300px;
+        border-radius: 20px;
+        margin: 20px 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        background-color: white; /* ensures solid background */
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 
     #heart {
         font-size: 60px;
         position: absolute;
         cursor: pointer;
-        transition: 0.2s;
+        transition: left 0.3s ease, top 0.3s ease;
     }
+
 
     #questionSection {
         display: none;
@@ -114,6 +128,8 @@ moveHeart();
 // When heart clicked
 heart.addEventListener("click", function() {
     count++;
+    heart.style.transform = "scale(1.3)";
+    setTimeout(()=>{heart.style.transform="scale(1)";}, 200);
     if (count < 3) {
         moveHeart();
     } else {
@@ -121,7 +137,7 @@ heart.addEventListener("click", function() {
         gameTitle.style.display = "none";
         questionSection.style.display = "block";
     }
-});
+});;
 
 // Make NO button run away
 noBtn.addEventListener("mouseover", function() {
