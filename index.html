@@ -152,6 +152,38 @@ yesBtn.addEventListener("click", function() {
     questionSection.style.display = "none";
     celebration.style.display = "block";
 });
+    
+// Confetti effect when YES is clicked
+function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.innerHTML = '🎊';
+        confetti.style.position = 'absolute';
+        confetti.style.fontSize = Math.random() * 24 + 12 + 'px';
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.top = '-50px';
+        confetti.style.opacity = Math.random();
+        confetti.style.transition = 'top 3s linear, opacity 3s linear';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.style.top = window.innerHeight + 'px';
+            confetti.style.opacity = 0;
+        }, 100);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 3100);
+    }
+}
+
+// Trigger confetti on YES click
+yesBtn.addEventListener("click", function() {
+    questionSection.style.display = "none";
+    celebration.style.display = "block";
+    createConfetti();
+});
+
 </script>
 
 </body>
